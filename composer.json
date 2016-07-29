@@ -1,6 +1,6 @@
 {
     "name": "agna/symfony-treebuilder",
-    "description": "TreeBuilder extension for read/write operations.",
+    "description": "TreeBuilder extension making definition modifications possible.",
     "require": {
         "symfony/symfony": ">=2.8"
     },
@@ -10,7 +10,7 @@
     "authors": [
         {
             "name": "Agoston Nagy",
-            "email": "agostone@gmail.com"
+            "email": "dont@email.me"
         }
     ],
     "autoload": {
