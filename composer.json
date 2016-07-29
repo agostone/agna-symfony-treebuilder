@@ -1,0 +1,22 @@
+{
+    "name": "agna/symfony-treebuilder",
+    "description": "TreeBuilder extension for read/write operations.",
+    "require": {
+        "symfony/symfony": ">=2.8"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.*"
+    },
+    "authors": [
+        {
+            "name": "Agoston Nagy",
+            "email": "agostone@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Agna\\": "src/Agna/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Agna\\": "tests/Agna/" }
+    }
+}
