@@ -56,13 +56,23 @@ $treeBuilder = new TreeBuilderConverter()->convert($treeBuilder);
 $treeBuilder->getRootDefinition()->children()->scalarValue('newOne')->end();
 ```
 
-## TODOs
-- A more comprehensive unit testing package
+#Coverage report
+```
+Code Coverage Report:
+  2016-07-31 10:41:15
+
+ Summary:
+  Classes: 100.00% (13/13)
+  Methods: 100.00% (12/12)
+  Lines:   100.00% (72/72)
+```
+
+# TODOs
 - Api documentation
 - Better documentation
 - More beer
 
-## Licensing
+# Licensing
 agna-symfony-treebuilder is free software.
 It comes without any warranty, to the extent permitted by applicable law.
 You can redistribute it and/or modify it under the terms of the 

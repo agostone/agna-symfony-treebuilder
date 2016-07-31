@@ -3,6 +3,10 @@
 namespace Agna\Symfony\Component\Config\Definition\Builder\Converter;
 
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Config\Definition\Builder\TreeBuilder as SymfonyTreeBuilder;
+use Agna\Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition;
+use Agna\Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use Agna\Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 class TreeBuilderConverterTest extends TestCase
 {
@@ -61,5 +65,37 @@ class TreeBuilderConverterTest extends TestCase
         $treeBuilderConverter->configureReplacer($replacer, $newConfiguration, false);
         $configuration = $treeBuilderConverter->getReplacerConfiguraiton($replacer);
         $this->assertEquals($newConfiguration, $configuration);
+
+        $replacer = 'Agna\Test\Symfony\Component\Config\Definition\Builder\Converter\DummyReplacer';
+        $treeBuilderConverter->configureReplacer(
+            $replacer,
+            []
+        );
+        $configuration = $treeBuilderConverter->getReplacerConfiguraiton($replacer);
+        $this->assertEquals([], $configuration);
+    }
+
+    public function testConvert()
+    {
+        $treeBuilder = new SymfonyTreeBuilder();
+        $root = $treeBuilder->root('test');
+        $root->children()
+            ->scalarNode('foo')->end()
+            ->scalarNode('baz')->end()
+        ->end();
+
+        $treeBuilderConverter = new TreeBuilderConverter();
+
+        $coverted = $treeBuilderConverter->convert($treeBuilder);
+        $this->assertInstanceOf(TreeBuilder::class, $coverted);
+
+        $root = $coverted->getRootDefinition();
+        $this->assertInstanceOf(ArrayNodeDefinition::class, $root);
+        $this->assertEquals('test', $root->getName());
+
+        $this->assertInstanceOf(ScalarNodeDefinition::class, $root->getChildDefinition('foo'));
+        $this->assertInstanceOf(ScalarNodeDefinition::class, $root->getChildDefinition('baz'));
+
+
     }
 }
