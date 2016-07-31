@@ -82,14 +82,10 @@ class TreeBuilderConverter
 
             $serialized = serialize($sourceTreeBuilder);
 
-            file_put_contents('F:/workspace_i/before_serialize.txt', $serialized);
-
             foreach ($this->replacers as $class => $arguments) {
                 array_splice($arguments, 0, 0, $serialized);
                 $serialized = call_user_func_array($class . '::replace', $arguments);
             }
-
-            file_put_contents('F:/workspace_i/after_serialize.txt', $serialized);
 
             $sourceTreeBuilder = unserialize($serialized);
         }

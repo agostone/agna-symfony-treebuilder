@@ -2,7 +2,7 @@
     "name": "agna/symfony-treebuilder",
     "description": "TreeBuilder extension making definition modifications possible.",
     "require": {
-        "symfony/symfony": ">=2.8"
+        "symfony/config": ">=2.8"
     },
     "require-dev": {
         "phpunit/phpunit": "5.*"
