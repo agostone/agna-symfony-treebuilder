@@ -24,7 +24,7 @@ class ObjectReplacer implements ReplacerInterface
         }
 
         foreach ($arguments[0] as &$value) {
-            $value = sprintf('/O:.[0-9]:"%s"/i', preg_quote($value));
+            $value = sprintf('/O:[0-9]*:"%s"/i', preg_quote($value));
         }
 
         foreach ($arguments[1] as &$value) {

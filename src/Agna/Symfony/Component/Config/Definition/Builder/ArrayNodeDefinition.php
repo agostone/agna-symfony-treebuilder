@@ -18,10 +18,23 @@ class ArrayNodeDefinition extends \Symfony\Component\Config\Definition\Builder\A
      * Returns with a child definition.
      *
      * @param string $name
-     * @return mixed
+     * @return mixed|null
      */
     public function getChildDefinition($name)
     {
-        return !isset($this->children[$name]) ?: $this->children[$name];
+        return isset($this->children[$name]) ? $this->children[$name] : null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @see \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition::getNodeBuilder()
+     */
+    protected function getNodeBuilder()
+    {
+        if (null === $this->nodeBuilder) {
+            $this->nodeBuilder = new NodeBuilder();
+        }
+
+        return $this->nodeBuilder->setParent($this);
     }
 }

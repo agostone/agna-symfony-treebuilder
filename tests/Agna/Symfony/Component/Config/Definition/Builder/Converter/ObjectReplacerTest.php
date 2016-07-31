@@ -12,7 +12,11 @@ class ObjectReplacerTest extends TestCase
         $serialized = serialize(new \Exception());
         $replaced = ObjectReplacer::replace($serialized, 'Exception', 'stdClass');
         $replaced = unserialize($replaced);
-        
         $this->assertInstanceOf('stdClass', $replaced);
+
+        $serialized = serialize(new \InvalidArgumentException());
+        $replaced = ObjectReplacer::replace($serialized, 'InvalidArgumentException', 'Exception');
+        $replaced = unserialize($replaced);
+        $this->assertInstanceOf('Exception', $replaced);
     }
 }

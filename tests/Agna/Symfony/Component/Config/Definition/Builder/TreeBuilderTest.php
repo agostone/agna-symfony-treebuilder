@@ -22,22 +22,16 @@ class TreeBuilderTest extends TestCase
     {
 
         $treeBuilder = new TreeBuilder();
-        
+
         $root = $treeBuilder->root('root', 'scalar');
         $this->assertInstanceOf('Agna\Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition', $root);
 
         $root = $treeBuilder->root('root');
         $this->assertInstanceOf('Agna\Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition', $root);
-        
 
-//        $this->assertInstanceOf('Agna\Symfony\Component\Config\Definition\Builder\TreeBuilder', $converted);
-
-//        $this->assertEquals('integer', $converted->getRootDefinition()->getChildDefinition('integer')->getName());
-//        $this->assertEquals('scalar', $converted->getRootDefinition()->getChildDefinition('scalar')->getName());
-        
         return $treeBuilder;
     }
-    
+
     /**
      * @depends testRoot
      */

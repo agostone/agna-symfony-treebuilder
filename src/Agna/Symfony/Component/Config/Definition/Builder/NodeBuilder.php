@@ -1,4 +1,5 @@
 <?php
+
 namespace Agna\Symfony\Component\Config\Definition\Builder;
 
 class NodeBuilder extends \Symfony\Component\Config\Definition\Builder\NodeBuilder
