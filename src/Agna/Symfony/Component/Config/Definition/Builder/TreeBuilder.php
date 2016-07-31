@@ -13,9 +13,9 @@ class TreeBuilder extends SymfonyTreeBuilder
      */
     public function root($name, $type = 'array', SymfonyNodeBuilder $builder = null)
     {
-        if (!$builder instanceof NodeBuilder) {
+        if ($builder !== null && !$builder instanceof NodeBuilder) {
             throw new \InvalidArgumentException(
-                sprintf('$builder should be instance of %s', NodeBuilder::class)
+                sprintf('$builder argument should be an instance of %s!', NodeBuilder::class)
             );
         }
 
